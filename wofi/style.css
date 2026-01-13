@@ -1,0 +1,63 @@
+/* RESET GERAL */
+* {
+    font-family: "JetBrains Mono Nerd Font", monospace;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* A JANELA PRINCIPAL (O Vidro) */
+window {
+    margin: 0px;
+    border: 2px solid #74c7ec; /* Borda Sapphire */
+    border-radius: 16px;
+    background-color: rgba(30, 30, 46, 0.5); /* Fundo transparente */
+}
+
+/* A CAIXA DE PESQUISA */
+#input {
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(17, 17, 27, 0.3); /* Mais escuro */
+    color: #cdd6f4; /* Texto claro */
+    padding: 10px;
+}
+
+#inner-box {
+    margin: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+/* OS ITENS DA LISTA */
+#entry {
+    margin: 5px 0px;
+    border: none;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 10px;
+}
+
+/* ITEM SELECIONADO (Quando você navega com as setas) */
+#entry:selected {
+    background-color: #74c7ec; /* Sapphire */
+    color: #1e1e2e; /* Texto escuro para contraste */
+    border-radius: 10px;
+    border: none;
+}
+
+/* ÍCONES */
+#img {
+    margin-right: 10px;
+    background-color: transparent;
+}
+
+#text {
+    margin: 5px;
+    border: none;
+    color: #cdd6f4;
+}
+
+#text:selected {
+    color: #1e1e2e;
+}

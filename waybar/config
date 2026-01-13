@@ -1,0 +1,59 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "spacing": 5,
+    "fixed-center": true,
+
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    /* Removi o "network" daqui. O ícone branco vai aparecer dentro do "tray" */
+    "modules-right": ["pulseaudio", "battery", "tray", "custom/notification"],
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+
+    /* BANDEJA (Onde o Wi-Fi branco vai morar) */
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+        /* Removi o "ignore-list", agora ele mostra tudo */
+    },
+
+    "battery": {
+        "states": { "good": 95, "warning": 30, "critical": 15 },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "  Mute",
+        "format-icons": {
+            "headphone": " ",
+            "default": [" ", " ", " "]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "on-click": "gsimplecal",
+        "on-click-right": "swaync-client -d -sw"
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "", 
+        "on-click": "swaync-client -t -sw",
+        "escape": true
+    }
+}

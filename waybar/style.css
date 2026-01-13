@@ -1,0 +1,95 @@
+/* --- PALETA DE CORES --- */
+@define-color bg-glass   rgba(15, 15, 25, 0.8);
+@define-color pill-bg    #313244;
+@define-color pill-border rgba(255, 255, 255, 0.1);
+
+@define-color text       #cdd6f4;
+@define-color active     #cba6f7;
+@define-color blue       #89b4fa;
+@define-color green      #a6e3a1;
+@define-color yellow     #f9e2af;
+@define-color red        #f38ba8;
+@define-color cyan       #89dceb;
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+/* --- BARRA PRINCIPAL --- */
+window#waybar {
+    background-color: @bg-glass;
+    color: @text;
+    border-bottom: none;
+}
+
+tooltip {
+    background: #1e1e2e;
+    border: 1px solid @active;
+}
+
+/* --- WORKSPACES (Cápsula Esquerda) --- */
+#workspaces {
+    background-color: @pill-bg;
+    margin: 6px 10px;
+    padding: 0 10px;
+    border-radius: 15px;
+    border: 1px solid @pill-border;
+}
+
+#workspaces button {
+    color: #9399b2;
+    padding: 0 6px;
+    background: transparent;
+    border-radius: 10px;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    color: @active;
+    background-color: rgba(203, 166, 247, 0.15);
+}
+
+#workspaces button:hover {
+    color: @text;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* --- MÓDULOS DA DIREITA (Todos em Cápsulas Agora) --- */
+/* Adicionei #tray e #custom-notification aqui para ganharem fundo */
+#pulseaudio, #battery, #tray, #custom-notification {
+    background-color: @pill-bg;
+    color: @text;
+    border-radius: 15px;
+    padding: 4px 14px; /* Espaço interno para parecer botão */
+    margin: 6px 4px;   /* Espaço entre eles */
+    border: 1px solid @pill-border;
+}
+
+/* Cores específicas */
+#pulseaudio { color: @cyan; }
+#battery { color: @green; }
+#battery.warning { color: @red; }
+#custom-notification { color: @active; padding-right: 14px; }
+
+/* Ajuste fino para a Bandeja não ficar apertada */
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; background-color: @red; }
+
+/* --- RELÓGIO (Limpo, sem brilho estranho) --- */
+#clock {
+    font-family: "Inter Display", "JetBrainsMono Nerd Font";
+    font-weight: 800;
+    font-size: 15px;
+    color: #11111b;
+    background-color: @blue;
+    padding: 4px 20px;
+    border-radius: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    /* Removi o box-shadow (brilho) que estava estranho */
+    box-shadow: none; 
+}
