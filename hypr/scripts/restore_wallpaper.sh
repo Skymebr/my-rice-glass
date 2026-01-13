@@ -1,5 +1,6 @@
 #!/bin/bash
 CACHE_FILE="$HOME/.cache/current_wallpaper"
+LOCK_FILE="$HOME/.cache/lock_wallpaper.png"
 
 if [ -f "$CACHE_FILE" ]; then
     # Lê o caminho do arquivo salvo
@@ -13,9 +14,15 @@ if [ -f "$CACHE_FILE" ]; then
         swww clear
         killall mpvpaper
         mpvpaper -o "no-audio --loop-playlist" '*' "$WALLPAPER" &
+        
+        # [CORREÇÃO] Extrai o primeiro frame do vídeo para usar no Lockscreen
+        ffmpeg -y -i "$WALLPAPER" -ss 00:00:00 -vframes 1 "$LOCK_FILE" > /dev/null 2>&1 &
     else
         killall mpvpaper
-        swww img "$WALLPAPER" --transition-step 255 # Sem animação no boot para ser rápido
+        swww img "$WALLPAPER" --transition-step 255
+        
+        # [CORREÇÃO] Converte a imagem atual para um PNG real para o Lockscreen
+        ffmpeg -y -i "$WALLPAPER" "$LOCK_FILE" > /dev/null 2>&1
     fi
 else
     # Se não tiver cache, roda o sorteio normal
