@@ -1,0 +1,10 @@
+/* Correção: .red, .green, .blue em vez de .r .g .b */
+@define-color background rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 0.75);
+
+@define-color text {{colors.on_surface.default.hex}};
+@define-color border {{colors.primary.default.hex}};
+@define-color button-bg {{colors.surface_container_high.default.hex}};
+@define-color button-text {{colors.primary.default.hex}};
+@define-color button-text-checked {{colors.on_primary.default.hex}};
+@define-color button-bg {{colors.surface_container_high.default.hex}};
+@define-color button-text {{colors.primary.default.hex}};

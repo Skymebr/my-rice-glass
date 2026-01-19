@@ -1,0 +1,75 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "source": "arch_small",
+        "padding": {
+            "top": 3,
+            "left": 2
+        },
+        // TRUQUE: Define as duas cores do logo como a cor primária vibrante
+        "color": {
+            "1": "{{colors.primary.default.hex}}",
+            "2": "{{colors.primary.default.hex}}" 
+        }
+    },
+    "display": {
+        "separator": " "
+    },
+    "modules": [
+        "break",
+        {
+            "type": "title",
+            "keyWidth": 10,
+            // Título na cor secundária para diferenciar do logo
+            "color": {
+                "user": "{{colors.secondary.default.hex}}",
+                "at": "{{colors.on_surface_variant.default.hex}}",
+                "host": "{{colors.secondary.default.hex}}"
+            }
+        },
+        "break",
+        {
+            "type": "os",
+            "key": " ",
+            "keyColor": "{{colors.primary.default.hex}}" 
+        },
+        {
+            "type": "kernel",
+            "key": " ",
+            "keyColor": "{{colors.primary.default.hex}}"
+        },
+        {
+            "type": "packages",
+            "format": "{} (pacman)",
+            "key": " ",
+            "keyColor": "{{colors.primary.default.hex}}"
+        },
+        {
+            "type": "shell",
+            "key": " ",
+            "keyColor": "{{colors.primary.default.hex}}" 
+        },
+        {
+            "type": "terminal",
+            "key": " ",
+            "keyColor": "{{colors.primary.default.hex}}" 
+        },
+        {
+            "type": "wm",
+            "key": " ",
+            "keyColor": "{{colors.primary.default.hex}}" 
+        },
+        {
+            "type": "uptime",
+            "key": " ",
+            "keyColor": "{{colors.primary.default.hex}}" 
+        },
+        "break",
+        {
+            "type": "colors",
+            "symbol": "circle",
+            "paddingLeft": 0
+        },
+        "break"
+    ]
+}

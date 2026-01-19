@@ -1,0 +1,81 @@
+{
+    //   _____ __ __ __ __ _____ _____ 
+    //  |   __|  |  |  |  |     |   __|
+    //  |__   |    -|  |  | | | |   __|
+    //  |_____|__|__|___  |_|_|_|_____|  HYPRLAND
+    //              |_____|            
+    //  Config by Skyme (Matugen Synced)
+
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "source": "arch_small",
+        "padding": {
+            "top": 3,
+            "left": 2
+        },
+        "color": {
+            "1": "{{colors.primary.default.hex}}",
+            "2": "{{colors.secondary.default.hex}}" 
+        }
+    },
+    "display": {
+        "separator": " "
+    },
+    "modules": [
+        "break",
+        {
+            "type": "title",
+            "keyWidth": 10,
+            "keyColor": "{{colors.primary.default.hex}}"
+        },
+        "break",
+        {
+            "type": "os",
+            "key": " ",
+            "keyColor": "{{colors.primary.default.hex}}"
+        },
+        {
+            "type": "kernel",
+            "key": " ",
+            "keyColor": "{{colors.primary.default.hex}}"
+        },
+        {
+            "type": "packages",
+            "format": "{} (pacman)",
+            "key": " ",
+            "keyColor": "{{colors.primary.default.hex}}"
+        },
+        {
+            "type": "shell",
+            "key": " ",
+            "keyColor": "{{colors.primary.default.hex}}"
+        },
+        {
+            "type": "terminal",
+            "key": " ",
+            "keyColor": "{{colors.primary.default.hex}}"
+        },
+        {
+            "type": "wm",
+            "key": " ",
+            "keyColor": "{{colors.primary.default.hex}}"
+        },
+        {
+            "type": "uptime",
+            "key": " ",
+            "keyColor": "{{colors.primary.default.hex}}"
+        },
+        {
+            "type": "media",
+            "key": "󰝚 ",
+            "keyColor": "{{colors.primary.default.hex}}"
+        },
+        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m"
+        },
+        "break",
+        "break"
+    ]
+}

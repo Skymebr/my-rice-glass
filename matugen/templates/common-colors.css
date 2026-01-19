@@ -1,0 +1,9 @@
+/* Template Genérico (Waybar, Wofi, etc) */
+@define-color background {{colors.surface.default.hex}};
+@define-color foreground {{colors.on_surface.default.hex}};
+@define-color primary {{colors.primary.default.hex}};
+@define-color secondary {{colors.secondary.default.hex}};
+@define-color tertiary {{colors.tertiary.default.hex}};
+@define-color error {{colors.error.default.hex}};
+@define-color surface {{colors.surface.default.hex}};
+@define-color surface-bright {{colors.surface_bright.default.hex}};

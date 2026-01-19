@@ -1,0 +1,59 @@
+[config]
+reload_apps = false
+
+# --- A MÁGICA DA COR ---
+# fidelity = Usa a cor exata do wallpaper (sem deixar cinza).
+# Se ainda achar fraco, mude para "expressive" (fica neon).
+variant = "fidelity"
+
+# --- TEMPLATES ---
+
+[templates.papirus_hex]
+input_path = "/home/skyme/.config/matugen/templates/folder-color.txt"
+output_path = "/home/skyme/.cache/matugen/current_primary_color.txt"
+post_hook = "bash /home/skyme/.config/matugen/scripts/update-papirus.sh &"
+
+[templates.hyprland]
+input_path = "/home/skyme/.config/matugen/templates/hyprland-colors.conf"
+output_path = "/home/skyme/.config/hypr/colors.conf"
+post_hook = "hyprctl reload"
+
+[templates.waybar]
+input_path = "/home/skyme/.config/matugen/templates/common-colors.css"
+output_path = "/home/skyme/.config/waybar/colors.css"
+# Opcional: Recarregar waybar se precisar
+# post_hook = "pkill -SIGUSR2 waybar"
+
+[templates.wofi]
+input_path = "/home/skyme/.config/matugen/templates/common-colors.css"
+output_path = "/home/skyme/.config/wofi/colors.css"
+
+[templates.swaync]
+input_path = "/home/skyme/.config/matugen/templates/swaync.css"
+output_path = "/home/skyme/.config/swaync/colors.css"
+post_hook = "swaync-client -rs" 
+
+[templates.kitty]
+input_path = "/home/skyme/.config/matugen/templates/kitty-colors.conf"
+output_path = "/home/skyme/.config/kitty/colors.conf"
+# Kitty recarrega sozinho se configurado, mas pode forçar:
+# post_hook = "pkill -SIGUSR1 kitty"
+
+[templates.fastfetch]
+input_path = "/home/skyme/.config/matugen/templates/fastfetch.jsonc"
+output_path = "/home/skyme/.config/fastfetch/config.jsonc"
+
+[templates.cava]
+input_path = "/home/skyme/.config/matugen/templates/cava.conf"
+output_path = "/home/skyme/.config/cava/config"
+post_hook = "pkill -USR1 cava"
+
+[templates.pywalfox]
+input_path = '/home/skyme/.config/matugen/templates/pywalfox-colors.json'
+output_path = '/home/skyme/.cache/wal/colors.json'
+post_hook = 'pywalfox update'
+
+[templates.spicetify]
+input_path = "/home/skyme/.config/matugen/templates/spicetify.ini"
+output_path = "/home/skyme/.config/spicetify/Themes/Matugen/color.ini"
+
