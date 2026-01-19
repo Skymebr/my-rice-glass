@@ -1,0 +1,38 @@
+# Não adiciona linha em branco
+add_newline = false
+
+# Ordem: Nome -> Ícone Arch -> Pasta
+format = """
+[* ](bold blue)\
+$username\
+[ *](bold blue) \
+$character\
+$directory\
+$git_branch\
+$line_break\
+$shell\
+"""
+
+[username]
+show_always = true
+style_user = "bg:bold blue fg:white"
+format = "[$user]($style)"
+
+[character]
+# Seu ícone do Arch azul
+success_symbol = "[󰣇 ](bold blue) "
+error_symbol = "[󰣇 ](bold red) "
+
+[directory]
+style = "bold cyan"
+truncation_length = 3
+
+# --- DESATIVANDO O "PESO" ---
+[python]
+disabled = true # Remove o ícone do Python
+
+[conda]
+disabled = true # Remove o texto do Anaconda/Conda
+
+[package]
+disabled = true # Remove versões de pacotes JSON/Cargo
