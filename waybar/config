@@ -10,7 +10,7 @@
 
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    /* Removi o "network" daqui. O ícone branco vai aparecer dentro do "tray" */
+    /* O Bluetooth aparecerá como ícone branco dentro do 'tray' via blueman-applet */
     "modules-right": ["pulseaudio", "battery", "tray", "custom/notification"],
 
     "hyprland/workspaces": {
@@ -19,11 +19,9 @@
         "format": "{name}"
     },
 
-    /* BANDEJA (Onde o Wi-Fi branco vai morar) */
     "tray": {
         "icon-size": 18,
         "spacing": 10
-        /* Removi o "ignore-list", agora ele mostra tudo */
     },
 
     "battery": {

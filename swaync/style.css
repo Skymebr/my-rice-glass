@@ -1,71 +1,46 @@
-k/* ================================================================= */
-/* SWAYNC THEME: MOCHA SIDEBAR (Full Height)
-/* ================================================================= */
+@import "colors.css";
 
-/* --- FONTE GLOBAL --- */
+/* --- CONFIG GLOBAL --- */
 * {
     font-family: "JetBrains Mono Nerd Font"; 
     font-weight: bold;
 }
 
-/* --- A BARRA LATERAL (Principal) --- */
+/* --- BARRA LATERAL (Principal) --- */
 .control-center {
-    /* Fundo Escuro com Transparência (Blur do Hyprland faz o resto) */
-    background: rgba(30, 30, 46, 0.55);
-    
-    /* Borda Neon apenas na Esquerda */
-    border-left: 2px solid #74c7ec; 
-    border-right: none; 
-    border-top: none; 
-    border-bottom: none;
-
-    /* Arredonda só a esquerda para dar efeito de "gaveta" saindo */
+    background: @background;
+    border-left: 2px solid @border; 
+    border-right: none; border-top: none; border-bottom: none;
     border-radius: 24px 0 0 24px; 
-    
-    /* Sombra projetada para a esquerda */
     box-shadow: -10px 0 20px rgba(0, 0, 0, 0.5);
-    
     padding: 15px;
-}
-
-/* --- ZONA DE SEGURANÇA (O Pulo do Gato) --- */
-/* Adiciona margem na direita de tudo para a barra de rolagem não cobrir nada */
-.widget-title,
-.widget-dnd,
-.widget-label,
-.widget-mpris,
-.widget-buttons-grid,
-.notification-row {
-    margin-right: 15px; /* Espaço para a barra passar */
-    margin-left: 5px;
 }
 
 /* --- TÍTULO --- */
 .widget-title {
-    color: #cdd6f4;
+    color: @text;
     font-size: 18px;
     margin-bottom: 10px;
 }
 
 .widget-title > button {
-    background: rgba(116, 199, 236, 0.1);
-    color: #cdd6f4;
-    border: 1px solid #74c7ec;
+    background: @button-bg;
+    color: @button-text;
+    border: 1px solid @border;
     border-radius: 12px;
     font-size: 12px;
     padding: 6px 15px;
-    text-shadow: none;
-    box-shadow: none;
+    text-shadow: none; box-shadow: none;
 }
 
 .widget-title > button:hover {
-    background: #74c7ec;
-    color: #1e1e2e;
+    background: shade(@button-bg, 1.2);
+    color: @button-text;
 }
 
 /* --- GRID DE BOTÕES (Wifi, Bluetooth) --- */
 .widget-buttons-grid {
-    background: rgba(17, 17, 27, 0.3); /* Fundo sutil para separar */
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 16px;
     padding: 5px;
     margin-top: 10px;
@@ -78,175 +53,117 @@ k/* ================================================================= */
     margin: 3px;
     border: none;
     box-shadow: none;
-    color: #cdd6f4;
+    color: @text;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
-    background: rgba(116, 199, 236, 0.2);
+    background: alpha(@border, 0.3);
 }
 
-/* Botão Ativado */
+/* [CORREÇÃO 1] Botão Ativado: Texto usa cor de contraste */
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
-    background: #74c7ec;
-    color: #1e1e2e;
+    background: @border;
+    color: @button-text-checked; /* <--- Mudei aqui */
 }
 
 /* --- PLAYER DE MÚSICA --- */
 .widget-mpris {
-    background: rgba(17, 17, 27, 0.3);
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 16px;
     padding: 10px;
     margin-bottom: 10px;
-    color: #cdd6f4;
+    color: @text;
 }
 
-/* Remove fundos pretos internos do GTK */
 .widget-mpris > box > box {
     background: transparent !important;
     border: none;
 }
 
-.widget-mpris-title {
-    font-size: 14px;
-    color: #89b4fa; /* Azul claro */
-}
-
-.widget-mpris-subtitle {
-    font-size: 12px;
-    color: #a6adc8;
-}
+.widget-mpris-title { font-size: 14px; color: @border; }
+.widget-mpris-subtitle { font-size: 12px; color: alpha(@text, 0.7); }
 
 /* --- SLIDERS (Volume/Brilho) --- */
 .widget-volume, .widget-backlight {
-    background: rgba(17, 17, 27, 0.3);
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 16px;
     padding: 8px 12px;
     margin-bottom: 8px;
 }
 
-/* O fundo da barra */
 trough {
-    background: rgba(69, 71, 90, 0.5);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     min-height: 6px;
 }
 
-/* A parte cheia da barra */
+/* [CORREÇÃO 2] Barra cheia usa a cor do tema */
 highlight {
-    background: #74c7ec;
+    background: @border;
     border-radius: 20px;
+}
+
+/* [CORREÇÃO 2] Bolinha do slider também usa a cor do tema */
+slider {
+    background: @border;
+    border: 2px solid @text; /* Opcional: borda para destacar a bolinha */
+    border-radius: 50%;
+    min-width: 16px;
+    min-height: 16px;
 }
 
 /* --- NOTIFICAÇÕES (Cards) --- */
 .notification-row {
-    outline: none;
-    margin-top: 8px;
+    outline: none; margin-top: 8px; margin-right: 15px; margin-left: 5px;
 }
+
+.floating-notifications { background: transparent; }
 
 .notification {
-    background: rgba(30, 30, 46, 0.7);
-    border: 1px solid rgba(116, 199, 236, 0.5); /* Borda fina azul */
+    background: alpha(@background, 0.5);
+    border: 1px solid alpha(@border, 0.7);
     border-radius: 16px;
     padding: 5px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.6);
 }
 
-.notification-content {
-    padding: 10px;
-}
-
-.summary {
-    color: #89b4fa;
-    font-size: 14px;
-}
-
-.time {
-    color: #a6adc8;
-    font-size: 11px;
-    margin-right: 5px;
-}
-
-.body {
-    color: #cdd6f4;
-    font-weight: normal;
-}
-
-/* Botão de Fechar Notificação */
-.close-button {
-    background: transparent;
-    color: #f38ba8; /* Vermelho suave */
-    border: none;
-    box-shadow: none;
-    text-shadow: none;
-}
+.notification-content { padding: 10px; }
+.summary { color: @border; font-size: 14px; }
+.time { color: alpha(@text, 0.6); font-size: 11px; margin-right: 5px; }
+.body { color: @text; font-weight: normal; }
+.close-button { background: transparent; color: @text; border: none; box-shadow: none; text-shadow: none; }
 
 /* --- ÍCONE "SEM NOTIFICAÇÕES" --- */
-.notification-list-container > label {
-    color: #a6adc8;
-}
+.notification-list-container > label { color: @text; }
+.widget-dnd > image, .notification-list-container > image { color: @border; }
 
-/* Tenta pintar o ícone grande */
-.widget-dnd > image,
-.notification-list-container > image {
-    color: #74c7ec; 
-}
-
-/* --- BARRA DE ROLAGEM (Clean) --- */
-scrollbar {
-    background: transparent;
-}
+/* --- BARRA DE ROLAGEM [CORREÇÃO 3] --- */
+scrollbar { background: transparent; }
 
 scrollbar slider {
-    background: rgba(116, 199, 236, 0.2); /* Quase invisível */
+    background: alpha(@border, 0.3);
     border-radius: 50px;
-    min-width: 4px; /* Bem fina */
+    min-width: 4px;     /* Mantive fino no estado normal */
     min-height: 40px;
     border: none;
     box-shadow: none;
 }
 
+/* Quando passa o mouse, aumenta só um pouquinho */
 scrollbar slider:hover {
-    background: #74c7ec; /* Acende ao passar o mouse */
-    min-width: 8px; /* Fica mais grossa para facilitar o clique */
+    background: @border;
+    min-width: 6px;     /* Era 8px, diminuí para 6px para ficar mais elegante */
 }
 
-scrollbar trough {
-    border: none;
-    background: transparent;
+scrollbar trough { border: none; background: transparent; }
+
+/* FIX FUNDO CINZA */
+listbox { background: transparent; }
+listbox > row { background: transparent !important; border: none !important; box-shadow: none !important; margin: 0px; }
+listbox > row:selected, listbox > row:focus, listbox > row:hover {
+    background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;
 }
 
-/* ================================================================= */
-/* FIX DEFINITIVO DO FUNDO CINZA (Focus & Selection)
-/* ================================================================= */
-
-/* Remove o fundo da lista geral */
-listbox {
-    background: transparent;
-}
-
-/* O Segredo: Ataca a linha da lista (o container da notificação) */
-listbox > row {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    margin: 0px;
-}
-
-/* Remove o cinza quando a linha está Selecionada (Foco) ou com Mouse em cima */
-listbox > row:selected,
-listbox > row:focus,
-listbox > row:hover {
-    background: transparent !important; /* Mata o cinza */
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important; /* Mata a linha pontilhada se houver */
-}
-
-/* Garante que a margem de segurança continue existindo mesmo selecionado */
-.notification-row {
-    outline: none;
-    /* Mantém as margens que definimos antes */
-    margin-right: 15px; 
-    margin-left: 5px;
-    margin-top: 8px;
-}
+# BRILHO
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-

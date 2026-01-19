@@ -62,7 +62,8 @@
             "show-per-app-label": false
         },
         "backlight": {
-            "label": "󰃟 "
+            "label": "󰃟 ",
+            "device": "amdgpu_bl1"
         },
         "dnd": {
             "text": "Do Not Disturb"

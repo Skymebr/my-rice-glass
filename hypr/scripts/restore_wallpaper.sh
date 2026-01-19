@@ -21,8 +21,18 @@ if [ -f "$CACHE_FILE" ]; then
         killall mpvpaper
         swww img "$WALLPAPER" --transition-step 255
         
-        # [CORREÇÃO] Converte a imagem atual para um PNG real para o Lockscreen
-        ffmpeg -y -i "$WALLPAPER" "$LOCK_FILE" > /dev/null 2>&1
+        # Copia a imagem para usar no Lockscreen
+        cp "$WALLPAPER" "$LOCK_FILE"
+    fi
+    
+    # Aplica cores com matugen
+    if command -v matugen &> /dev/null && [ -f "$LOCK_FILE" ]; then
+        # Gera cores Material You (matugen gera ~/.cache/wal/colors.json automaticamente)
+        matugen image "$LOCK_FILE" --quiet 2>/dev/null || true
+        
+        if [ -f "$HOME/.config/hypr/scripts/apply_matugen_colors.sh" ]; then
+           # "$HOME/.config/hypr/scripts/apply_matugen_colors.sh"
+        fi
     fi
 else
     # Se não tiver cache, roda o sorteio normal

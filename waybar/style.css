@@ -1,15 +1,11 @@
-/* --- PALETA DE CORES --- */
-@define-color bg-glass   rgba(15, 15, 25, 0.8);
-@define-color pill-bg    #313244;
-@define-color pill-border rgba(255, 255, 255, 0.1);
+@import "colors.css";
 
-@define-color text       #cdd6f4;
-@define-color active     #cba6f7;
-@define-color blue       #89b4fa;
-@define-color green      #a6e3a1;
-@define-color yellow     #f9e2af;
-@define-color red        #f38ba8;
-@define-color cyan       #89dceb;
+/* --- MAPEAMENTO DO MATUGEN --- */
+@define-color bar-bg @background;
+@define-color main-fg @primary;
+@define-color pill-bg @surface;
+@define-color pill-border @secondary;
+@define-color text-color @on_primary;
 
 * {
     font-family: "JetBrainsMono Nerd Font";
@@ -18,16 +14,17 @@
     min-height: 0;
 }
 
-/* --- BARRA PRINCIPAL --- */
+/* --- BARRA PRINCIPAL (GLASS) --- */
 window#waybar {
-    background-color: @bg-glass;
-    color: @text;
+    /* alpha em 0.5 define 50% de transparência */
+    background-color: alpha(@bar-bg, 0.5);
     border-bottom: none;
+    color: @text-color;
 }
 
 tooltip {
-    background: #1e1e2e;
-    border: 1px solid @active;
+    background: @bar-bg;
+    border: 1px solid @primary;
 }
 
 /* --- WORKSPACES (Cápsula Esquerda) --- */
@@ -40,56 +37,42 @@ tooltip {
 }
 
 #workspaces button {
-    color: #9399b2;
+    color: @secondary;
     padding: 0 6px;
     background: transparent;
-    border-radius: 10px;
     margin: 4px 0;
-    transition: all 0.3s ease;
 }
 
 #workspaces button.active {
-    color: @active;
-    background-color: rgba(203, 166, 247, 0.15);
+    color: @bar-bg;
+    background-color: @primary;
+    border-radius: 10px;
 }
 
-#workspaces button:hover {
-    color: @text;
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* --- MÓDULOS DA DIREITA (Todos em Cápsulas Agora) --- */
-/* Adicionei #tray e #custom-notification aqui para ganharem fundo */
+/* --- MÓDULOS DA DIREITA --- */
+/* Note que incluímos apenas o #tray aqui, o bluetooth branco aparecerá dentro dele */
 #pulseaudio, #battery, #tray, #custom-notification {
     background-color: @pill-bg;
-    color: @text;
+    color: @primary;
     border-radius: 15px;
-    padding: 4px 14px; /* Espaço interno para parecer botão */
-    margin: 6px 4px;   /* Espaço entre eles */
+    padding: 4px 14px;
+    margin: 6px 4px;
     border: 1px solid @pill-border;
 }
 
-/* Cores específicas */
-#pulseaudio { color: @cyan; }
-#battery { color: @green; }
-#battery.warning { color: @red; }
-#custom-notification { color: @active; padding-right: 14px; }
-
-/* Ajuste fino para a Bandeja não ficar apertada */
-#tray > .passive { -gtk-icon-effect: dim; }
-#tray > .needs-attention { -gtk-icon-effect: highlight; background-color: @red; }
-
-/* --- RELÓGIO (Limpo, sem brilho estranho) --- */
 #clock {
     font-family: "Inter Display", "JetBrainsMono Nerd Font";
     font-weight: 800;
     font-size: 15px;
-    color: #11111b;
-    background-color: @blue;
+    background-color: @primary;
+    color: @text-color;
     padding: 4px 20px;
     border-radius: 15px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    /* Removi o box-shadow (brilho) que estava estranho */
-    box-shadow: none; 
+    margin: 5px 10px;
 }
+
+#battery.warning { color: @error; }
+#battery.critical { background-color: @error; color: @bar-bg; }
+
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; background-color: @error; }

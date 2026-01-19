@@ -1,3 +1,6 @@
+/* IMPORTANTE: Traz as cores do Matugen */
+@import "/home/skyme/.config/wofi/colors.css";
+
 /* RESET GERAL */
 * {
     font-family: "JetBrains Mono Nerd Font", monospace;
@@ -8,9 +11,11 @@
 /* A JANELA PRINCIPAL (O Vidro) */
 window {
     margin: 0px;
-    border: 2px solid #74c7ec; /* Borda Sapphire */
+    /* Borda usa a cor de destaque do tema */
+    border: 2px solid @primary; 
     border-radius: 16px;
-    background-color: rgba(30, 30, 46, 0.5); /* Fundo transparente */
+    /* Fundo usa a cor do wallpaper com transparência (0.85) */
+    background-color: rgba(15,28,36,0.5); 
 }
 
 /* A CAIXA DE PESQUISA */
@@ -18,8 +23,9 @@ window {
     margin: 5px;
     border: none;
     border-radius: 10px;
-    background-color: rgba(17, 17, 27, 0.3); /* Mais escuro */
-    color: #cdd6f4; /* Texto claro */
+    /* Fundo um pouco mais claro para destacar */
+    background-color: @surface; 
+    color: @primary; 
     padding: 10px;
 }
 
@@ -38,10 +44,12 @@ window {
     padding: 10px;
 }
 
-/* ITEM SELECIONADO (Quando você navega com as setas) */
+/* ITEM SELECIONADO (O Destaque) */
 #entry:selected {
-    background-color: #74c7ec; /* Sapphire */
-    color: #1e1e2e; /* Texto escuro para contraste */
+    /* Fundo fica da cor principal */
+    background-color: @primary; 
+    /* Texto inverte para ficar legível (preto/escuro) */
+    color: @background; 
     border-radius: 10px;
     border: none;
 }
@@ -55,9 +63,10 @@ window {
 #text {
     margin: 5px;
     border: none;
-    color: #cdd6f4;
+    color: @secondary; /* Texto normal numa cor suave */
 }
 
+/* Garante que o texto selecionado fique legível */
 #text:selected {
-    color: #1e1e2e;
+    color: @background;
 }

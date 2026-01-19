@@ -1,0 +1,10 @@
+/* Correção: .red, .green, .blue em vez de .r .g .b */
+@define-color background rgba(17, 19, 24, 0.75);
+
+@define-color text #e2e2e9;
+@define-color border #abc7ff;
+@define-color button-bg #282a2f;
+@define-color button-text #abc7ff;
+@define-color button-text-checked #0c305f;
+@define-color button-bg #282a2f;
+@define-color button-text #abc7ff;
