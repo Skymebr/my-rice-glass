@@ -8,8 +8,8 @@
         },
         // TRUQUE: Define as duas cores do logo como a cor primária vibrante
         "color": {
-            "1": "#96cdf8",
-            "2": "#96cdf8" 
+            "1": "#ffb4aa",
+            "2": "#ffb4aa" 
         }
     },
     "display": {
@@ -22,47 +22,47 @@
             "keyWidth": 10,
             // Título na cor secundária para diferenciar do logo
             "color": {
-                "user": "#b7c9d9",
-                "at": "#c1c7ce",
-                "host": "#b7c9d9"
+                "user": "#e7bdb7",
+                "at": "#d8c2be",
+                "host": "#e7bdb7"
             }
         },
         "break",
         {
             "type": "os",
             "key": " ",
-            "keyColor": "#96cdf8" 
+            "keyColor": "#ffb4aa" 
         },
         {
             "type": "kernel",
             "key": " ",
-            "keyColor": "#96cdf8"
+            "keyColor": "#ffb4aa"
         },
         {
             "type": "packages",
             "format": "{} (pacman)",
             "key": " ",
-            "keyColor": "#96cdf8"
+            "keyColor": "#ffb4aa"
         },
         {
             "type": "shell",
             "key": " ",
-            "keyColor": "#96cdf8" 
+            "keyColor": "#ffb4aa" 
         },
         {
             "type": "terminal",
             "key": " ",
-            "keyColor": "#96cdf8" 
+            "keyColor": "#ffb4aa" 
         },
         {
             "type": "wm",
             "key": " ",
-            "keyColor": "#96cdf8" 
+            "keyColor": "#ffb4aa" 
         },
         {
             "type": "uptime",
             "key": " ",
-            "keyColor": "#96cdf8" 
+            "keyColor": "#ffb4aa" 
         },
         "break",
         {
