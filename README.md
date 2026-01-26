@@ -1,26 +1,5 @@
 # my-rice-glass: Hyprland Configuration (Wayland) :)
 
-## 🎥 Visual Demo
-
-To see the "rice" in action, check out this short video demonstration.
-
-**Note on Video Embedding:** GitHub's Markdown does not natively support the `<video>` tag. The recommended method is to upload the video to a GitHub issue or pull request comment and then use the direct link to the video file within an HTML `<video>` tag in your README. Alternatively, you can use a GIF for shorter demos.
-
-<div align="center">
-  <!-- 
-    INSTRUCTIONS FOR USER:
-    1. Upload your MP4 video file (max 10MB) to a new GitHub Issue or Pull Request comment in this repository.
-    2. After uploading, right-click the video and select "Copy video address" or "Copy link address".
-    3. Replace the placeholder URL below with the copied direct link.
-  -->
-  <video src="[PASTE_YOUR_DIRECT_VIDEO_URL_HERE]" controls="controls" style="max-width: 100%;">
-  </video>
-</div>
-
----
-
-This repository contains the configuration files (dotfiles) for my Linux desktop environment, focused on the **Hyprland** window manager (Wayland). The configuration is designed to be visually appealing, featuring *blur* effects (glassmorphism) and dynamic color integration.
-
 ## ⚙️ Core Components
 
 The "rice" (visual configuration) is built around the following core components:
