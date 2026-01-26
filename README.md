@@ -75,7 +75,7 @@ A configuração utiliza o `hyprshot` para capturas de tela.
 | **Capturar Janela** | `SUPER + Print` | `hyprshot -m window` |
 | **Capturar Tela Inteira** | `SHIFT + Print` | `hyprshot -m output` |
 
-## 🛠️ Notas de Instalação
+## 🛠️ Instalação Simplificada
 
 Para replicar esta configuração, você precisará dos seguintes pacotes instalados:
 
@@ -88,21 +88,26 @@ Para replicar esta configuração, você precisará dos seguintes pacotes instal
 *   **Notificações:** `SwayNC`
 *   **Utilitários:** `kitty`, `thunar`, `hyprshot`, `playerctl`, `brightnessctl`, `wpctl`
 
-**Passos Recomendados:**
+**Instalação com Script (Recomendado):**
 
-1.  Clone o repositório para a sua pasta de dotfiles (ex: `~/meus-dotfiles`).
-2.  Crie links simbólicos dos arquivos de configuração para a pasta `~/.config/`.
+1.  **Clone o repositório:**
     ```bash
-    ln -s ~/meus-dotfiles/hypr ~/.config/hypr
-    ln -s ~/meus-dotfiles/waybar ~/.config/waybar
-    # ... e assim por diante para os outros diretórios
+    git clone https://github.com/Skymebr/my-rice-glass.git
+    cd my-rice-glass
     ```
-3.  Certifique-se de que o caminho para o script `wallpaper.sh` em `hypr/hyprland.conf` (linha 81) esteja correto, apontando para a localização onde você clonou o repositório. O caminho atual é:
+2.  **Instale as Dependências:**
+    Certifique-se de que todos os pacotes listados acima (Hyprland, Waybar, Kitty, etc.) estejam instalados no seu sistema. O script **não** instala os pacotes, apenas configura os arquivos.
+3.  **Execute o Script de Instalação:**
+    O script irá criar os links simbólicos necessários na sua pasta `~/.config/` e corrigir o caminho do script de wallpaper no `hyprland.conf` automaticamente.
+    ```bash
+    chmod +x install.sh
+    ./install.sh
     ```
-    exec-once = /home/skyme/meus-dotfiles/hypr/scripts/wallpaper.sh init
-    ```
-    Você pode precisar ajustar `/home/skyme/meus-dotfiles` para o seu caminho.
-4.  Execute o `matugen` e o `swww-daemon` na inicialização, conforme configurado no `hyprland.conf`.
+4.  **Reinicie:**
+    Após a execução, reinicie o Hyprland ou o computador para que as novas configurações entrem em vigor.
+
+**Instalação Manual (Alternativa):**
+Se preferir, você pode seguir os passos manuais de criação de links simbólicos e correção de caminho, conforme detalhado na seção anterior.
 
 ---
 *README gerado por Manus AI em 26 de Janeiro de 2026.*
