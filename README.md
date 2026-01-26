@@ -1,113 +1,113 @@
-# 🍚 my-rice-glass: Configuração Hyprland (Wayland)
+# 🍚 my-rice-glass: Hyprland Configuration (Wayland)
 
-Este repositório contém os arquivos de configuração (dotfiles) para o meu ambiente de desktop no Linux, focado no gerenciador de janelas **Hyprland** (Wayland). A configuração é projetada para ser visualmente agradável, com efeitos de *blur* (glassmorphism) e integração de cores dinâmica.
+This repository contains the configuration files (dotfiles) for my Linux desktop environment, focused on the **Hyprland** window manager (Wayland). The configuration is designed to be visually appealing, featuring *blur* effects (glassmorphism) and dynamic color integration.
 
-## ⚙️ Componentes Principais
+## ⚙️ Core Components
 
-A "rice" (configuração visual) é construída em torno dos seguintes componentes principais:
+The "rice" (visual configuration) is built around the following core components:
 
-| Componente | Função | Arquivos de Configuração |
+| Component | Function | Configuration Files |
 | :--- | :--- | :--- |
-| **Hyprland** | Gerenciador de Janelas (Tiling) | `hypr/hyprland.conf`, `hypr/colors.conf` |
-| **Waybar** | Barra de Status | `waybar/config`, `waybar/style.css` |
-| **Kitty** | Emulador de Terminal | `kitty/kitty.conf`, `kitty/colors.conf` |
-| **Wofi** | Lançador de Aplicações | `wofi/style.css` |
-| **SwayNC** | Central de Notificações | `swaync/config.json`, `swaync/style.css` |
-| **Swww** | Gerenciador de Wallpaper | Integrado via `hypr/scripts/wallpaper.sh` |
-| **Matugen** | Geração de Esquema de Cores | `matugen/config.toml` |
-| **Hyprlock** | Bloqueio de Tela | `hypr/hyprlock.conf` |
+| **Hyprland** | Tiling Window Manager | `hypr/hyprland.conf`, `hypr/colors.conf` |
+| **Waybar** | Status Bar | `waybar/config`, `waybar/style.css` |
+| **Kitty** | Terminal Emulator | `kitty/kitty.conf`, `kitty/colors.conf` |
+| **Wofi** | Application Launcher | `wofi/style.css` |
+| **SwayNC** | Notification Center | `swaync/config.json`, `swaync/style.css` |
+| **Swww** | Wallpaper Manager | Integrated via `hypr/scripts/wallpaper.sh` |
+| **Matugen** | Color Scheme Generation | `matugen/config.toml` |
+| **Hyprlock** | Screen Locker | `hypr/hyprlock.conf` |
 
-## 🚀 Comandos e Atalhos de Sistema
+## 🚀 System Commands and Shortcuts
 
-O coração da interação com o sistema é o arquivo `hypr/hyprland.conf`, que define todos os atalhos de teclado. A tecla principal (`$mainMod`) é a tecla **SUPER** (também conhecida como `Win` ou `Meta`).
+The core of system interaction is the `hypr/hyprland.conf` file, which defines all keyboard shortcuts. The main modifier key (`$mainMod`) is the **SUPER** key (also known as `Win` or `Meta`).
 
-### 1. Menu de Energia e Controle do Sistema
+### 1. Power Menu and System Control
 
-O controle de energia e sessão é feito através de um **Submap** do Hyprland, que é ativado com `SUPER + X`.
+Power and session control are managed through a Hyprland **Submap**, activated with `SUPER + X`.
 
-| Ação | Atalho | Comando Executado | Observações |
+| Action | Shortcut | Executed Command | Notes |
 | :--- | :--- | :--- | :--- |
-| **Ativar Menu** | `SUPER + X` | `hyprctl dispatch submap power` | Exibe uma notificação com as opções. |
-| **Desligar** | `P` (após `SUPER + X`) | `systemctl poweroff` | Desliga o computador. |
-| **Reiniciar** | `R` (após `SUPER + X`) | `systemctl reboot` | Reinicia o computador. |
-| **Bloquear Tela** | `L` (após `SUPER + X`) | `hyprlock` | Bloqueia a tela com o Hyprlock. |
-| **Suspender** | `S` (após `SUPER + X`) | `systemctl suspend` | Coloca o computador em modo de suspensão. |
-| **Encerrar Sessão** | `E` (após `SUPER + X`) | `hyprctl dispatch exit` | Sai do Hyprland (Logout). |
-| **Cancelar Menu** | `Escape` (após `SUPER + X`) | `hyprctl dispatch submap reset` | Volta ao modo de atalhos normal. |
+| **Activate Menu** | `SUPER + X` | `hyprctl dispatch submap power` | Displays a notification with the options. |
+| **Poweroff** | `P` (after `SUPER + X`) | `systemctl poweroff` | Shuts down the computer. |
+| **Reboot** | `R` (after `SUPER + X`) | `systemctl reboot` | Restarts the computer. |
+| **Lock Screen** | `L` (after `SUPER + X`) | `hyprlock` | Locks the screen using Hyprlock. |
+| **Suspend** | `S` (after `SUPER + X`) | `systemctl suspend` | Puts the computer into suspend mode. |
+| **Log Out** | `E` (after `SUPER + X`) | `hyprctl dispatch exit` | Exits Hyprland (Logout). |
+| **Cancel Menu** | `Escape` (after `SUPER + X`) | `hyprctl dispatch submap reset` | Returns to normal shortcut mode. |
 
-### 2. Troca de Wallpaper
+### 2. Wallpaper Switching
 
-A troca de papel de parede é automatizada e é um dos pontos chave desta configuração, pois ela dispara a atualização de cores de todo o sistema.
+Wallpaper switching is automated and is a key feature of this configuration, as it triggers the update of the entire system's color scheme.
 
-| Ação | Atalho | Script Executado | Observações |
+| Action | Shortcut | Executed Script | Notes |
 | :--- | :--- | :--- | :--- |
-| **Trocar Wallpaper** | `SUPER + W` | `~/.config/hypr/scripts/wallpaper.sh` | Seleciona um novo wallpaper (imagem ou vídeo) e atualiza as cores do sistema via Matugen. |
+| **Change Wallpaper** | `SUPER + W` | `~/.config/hypr/scripts/wallpaper.sh` | Selects a new wallpaper (image or video) and updates system colors via Matugen. |
 
-O script `wallpaper.sh` faz o seguinte:
-1.  Seleciona um arquivo aleatório (imagem, GIF, MP4, MKV, WEBM) da pasta `wallpapers`.
-2.  Se for um vídeo, gera um *thumbnail* estático para o Hyprlock e para a transição.
-3.  Aplica o wallpaper usando `swww` (para imagens) ou `mpvpaper` (para vídeos).
-4.  Executa o `matugen` para extrair as cores dominantes do novo wallpaper e aplicá-las a:
-    *   Bordas de janelas do Hyprland.
-    *   Waybar.
-    *   Kitty (terminal).
-    *   SwayNC (notificações).
+The `wallpaper.sh` script does the following:
+1. Selects a random file (image, GIF, MP4, MKV, WEBM) from the `wallpapers` folder.
+2. If it's a video, it generates a static *thumbnail* for Hyprlock and for the transition.
+3. Applies the wallpaper using `swww` (for images) or `mpvpaper` (for videos).
+4. Executes `matugen` to extract the dominant colors from the new wallpaper and apply them to:
+    * Hyprland window borders.
+    * Waybar.
+    * Kitty (terminal).
+    * SwayNC (notifications).
 
-### 3. Atalhos de Aplicações e Janelas
+### 3. Application and Window Shortcuts
 
-| Ação | Atalho | Comando/Programa |
+| Action | Shortcut | Command/Program |
 | :--- | :--- | :--- |
 | **Terminal** | `SUPER + Q` | `kitty` |
-| **Navegador** | `SUPER + B` | `firefox` |
-| **Gerenciador de Arquivos** | `SUPER + E` | `thunar` |
-| **Lançador de Aplicações** | `SUPER + Space` | `wofi` |
-| **Fechar Janela Ativa** | `SUPER + C` | `killactive,` |
-| **Alternar Flutuante** | `SUPER + V` | `togglefloating,` |
-| **Tela Cheia** | `SUPER + F` | `fullscreen` |
+| **Browser** | `SUPER + B` | `firefox` |
+| **File Manager** | `SUPER + E` | `thunar` |
+| **Application Launcher** | `SUPER + Space` | `wofi` |
+| **Close Active Window** | `SUPER + C` | `killactive,` |
+| **Toggle Floating** | `SUPER + V` | `togglefloating,` |
+| **Fullscreen** | `SUPER + F` | `fullscreen` |
 
-### 4. Capturas de Tela (Screenshots)
+### 4. Screenshots
 
-A configuração utiliza o `hyprshot` para capturas de tela.
+The configuration uses `hyprshot` for taking screenshots.
 
-| Ação | Atalho | Comando Executado |
+| Action | Shortcut | Executed Command |
 | :--- | :--- | :--- |
-| **Capturar Região** | `Print` | `hyprshot -m region --clipboard-only` |
-| **Capturar Janela** | `SUPER + Print` | `hyprshot -m window` |
-| **Capturar Tela Inteira** | `SHIFT + Print` | `hyprshot -m output` |
+| **Capture Region** | `Print` | `hyprshot -m region --clipboard-only` |
+| **Capture Window** | `SUPER + Print` | `hyprshot -m window` |
+| **Capture Full Screen** | `SHIFT + Print` | `hyprshot -m output` |
 
-## 🛠️ Instalação Simplificada
+## 🛠️ Simplified Installation
 
-Para replicar esta configuração, você precisará dos seguintes pacotes instalados:
+To replicate this configuration, you will need the following packages installed:
 
-*   **Gerenciador de Janelas:** `Hyprland`
-*   **Barra de Status:** `Waybar`
-*   **Lançador:** `Wofi`
-*   **Bloqueio de Tela:** `Hyprlock`
-*   **Wallpaper:** `swww` e `mpvpaper` (para vídeos)
-*   **Cores Dinâmicas:** `matugen`
-*   **Notificações:** `SwayNC`
-*   **Utilitários:** `kitty`, `thunar`, `hyprshot`, `playerctl`, `brightnessctl`, `wpctl`
+*   **Window Manager:** `Hyprland`
+*   **Status Bar:** `Waybar`
+*   **Launcher:** `Wofi`
+*   **Screen Locker:** `Hyprlock`
+*   **Wallpaper:** `swww` and `mpvpaper` (for videos)
+*   **Dynamic Colors:** `matugen`
+*   **Notifications:** `SwayNC`
+*   **Utilities:** `kitty`, `thunar`, `hyprshot`, `playerctl`, `brightnessctl`, `wpctl`, `ffmpeg`
 
-**Instalação com Script (Recomendado):**
+**Installation with Script (Recommended):**
 
-1.  **Clone o repositório:**
+1.  **Clone the repository:**
     ```bash
     git clone https://github.com/Skymebr/my-rice-glass.git
     cd my-rice-glass
     ```
-2.  **Instale as Dependências:**
-    Certifique-se de que todos os pacotes listados acima (Hyprland, Waybar, Kitty, etc.) estejam instalados no seu sistema. O script **não** instala os pacotes, apenas configura os arquivos.
-3.  **Execute o Script de Instalação:**
-    O script irá criar os links simbólicos necessários na sua pasta `~/.config/` e corrigir o caminho do script de wallpaper no `hyprland.conf` automaticamente.
+2.  **Install Dependencies:**
+    Ensure that all packages listed above (Hyprland, Waybar, Kitty, etc.) are installed on your system. The script **does not** install packages, it only configures the files.
+3.  **Execute the Installation Script:**
+    The script will create the necessary symbolic links in your `~/.config/` folder and automatically fix the wallpaper script path in `hyprland.conf`.
     ```bash
     chmod +x install.sh
     ./install.sh
     ```
-4.  **Reinicie:**
-    Após a execução, reinicie o Hyprland ou o computador para que as novas configurações entrem em vigor.
+4.  **Restart:**
+    After execution, restart Hyprland or your computer for the new settings to take effect.
 
-**Instalação Manual (Alternativa):**
-Se preferir, você pode seguir os passos manuais de criação de links simbólicos e correção de caminho, conforme detalhado na seção anterior.
+**Manual Installation (Alternative):**
+If you prefer, you can follow the manual steps of creating symbolic links and path correction, as detailed in the previous section.
 
 ---
-*README gerado por Manus AI em 26 de Janeiro de 2026.*
+*README generated by Manus AI on January 26, 2026.*

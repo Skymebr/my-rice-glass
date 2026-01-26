@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # ====================================================================
-# my-rice-glass: Script de Instalação Simplificado
-# Este script automatiza a criação de links simbólicos para os dotfiles
-# na pasta ~/.config/ e corrige o caminho hardcoded no hyprland.conf.
+# my-rice-glass: Simplified Installation Script
+# This script automates the creation of symbolic links for dotfiles
+# in the ~/.config/ folder and fixes the hardcoded path in hyprland.conf.
 # ====================================================================
 
 DOTFILES_DIR="$(pwd)"
@@ -11,32 +11,32 @@ CONFIG_DIR="$HOME/.config"
 HYPR_CONFIG="$DOTFILES_DIR/hypr/hyprland.conf"
 
 # --------------------------------------------------------------------
-# 1. FUNÇÃO DE LOG
+# 1. LOGGING FUNCTION
 # --------------------------------------------------------------------
 log() {
     echo -e "\n\033[1;34m==>\033[0m \033[1m$1\033[0m"
 }
 
 # --------------------------------------------------------------------
-# 2. FUNÇÃO DE DEPENDÊNCIAS
+# 2. DEPENDENCIES FUNCTION
 # --------------------------------------------------------------------
 list_dependencies() {
-    log "DEPENDÊNCIAS NECESSÁRIAS"
+    log "REQUIRED DEPENDENCIES"
     echo "--------------------------------------------------------------------"
-    echo "Este script NÃO instala pacotes. Você deve instalar manualmente:"
+    echo "This script DOES NOT install packages. You must install them manually:"
     echo "Hyprland, Waybar, Kitty, Wofi, SwayNC, Swww, Matugen, Hyprlock,"
-    echo "Thunar, Hyprshot, playerctl, brightnessctl, wpctl, ffmpeg (para vídeos)."
+    echo "Thunar, Hyprshot, playerctl, brightnessctl, wpctl, ffmpeg (for videos)."
     echo "--------------------------------------------------------------------"
-    read -p "Pressione [Enter] para continuar..."
+    read -p "Press [Enter] to continue..."
 }
 
 # --------------------------------------------------------------------
-# 3. FUNÇÃO DE CRIAÇÃO DE LINKS SIMBÓLICOS
+# 3. SYMBOLIC LINK CREATION FUNCTION
 # --------------------------------------------------------------------
 create_symlinks() {
-    log "CRIANDO LINKS SIMBÓLICOS"
+    log "CREATING SYMBOLIC LINKS"
     
-    # Lista de diretórios a serem linkados
+    # List of directories to be linked
     declare -a DIRS=("hypr" "kitty" "matugen" "swaync" "waybar" "wofi")
     
     for dir in "${DIRS[@]}"; do
@@ -44,87 +44,84 @@ create_symlinks() {
         TARGET="$CONFIG_DIR/$dir"
         
         if [ -d "$TARGET" ]; then
-            echo "  - $TARGET já existe. Fazendo backup para $TARGET.bak"
+            echo "  - $TARGET already exists. Backing up to $TARGET.bak"
             mv "$TARGET" "$TARGET.bak"
         fi
         
-        echo "  - Criando link: $SOURCE -> $TARGET"
+        echo "  - Creating link: $SOURCE -> $TARGET"
         ln -s "$SOURCE" "$TARGET"
     done
     
-    # Link especial para o starship.toml
+    # Special link for starship.toml
     if [ -f "$DOTFILES_DIR/starship.toml" ]; then
         if [ -f "$HOME/.config/starship.toml" ]; then
-            echo "  - $HOME/.config/starship.toml já existe. Fazendo backup para $HOME/.config/starship.toml.bak"
+            echo "  - $HOME/.config/starship.toml already exists. Backing up to $HOME/.config/starship.toml.bak"
             mv "$HOME/.config/starship.toml" "$HOME/.config/starship.toml.bak"
         fi
-        echo "  - Criando link: $DOTFILES_DIR/starship.toml -> $HOME/.config/starship.toml"
+        echo "  - Creating link: $DOTFILES_DIR/starship.toml -> $HOME/.config/starship.toml"
         ln -s "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml"
     fi
 }
 
 # --------------------------------------------------------------------
-# 4. FUNÇÃO DE CORREÇÃO DE CAMINHO
+# 4. PATH CORRECTION FUNCTION
 # --------------------------------------------------------------------
 fix_hyprland_path() {
-    log "CORRIGINDO CAMINHO DO SCRIPT DE WALLPAPER"
+    log "FIXING WALLPAPER SCRIPT PATH"
     
-    # O caminho hardcoded no hyprland.conf é:
+    # The hardcoded path in hyprland.conf is:
     # exec-once = /home/skyme/meus-dotfiles/hypr/scripts/wallpaper.sh init
     
-    # O novo caminho deve ser:
+    # The new path should be:
     NEW_PATH="$DOTFILES_DIR/hypr/scripts/wallpaper.sh init"
     
-    # Escapando barras para o sed
+    # Escaping slashes for sed
     ESCAPED_NEW_PATH=$(echo "$NEW_PATH" | sed 's/\//\\\//g')
     
-    # Usando sed para substituir a linha 81 no arquivo de configuração
-    # A linha 81 é: exec-once = /home/skyme/meus-dotfiles/hypr/scripts/wallpaper.sh init
-    
-    # Primeiro, vamos garantir que o arquivo existe e é editável
+    # Using sed to replace line 81 in the configuration file
     if [ ! -f "$HYPR_CONFIG" ]; then
-        echo "ERRO: Arquivo $HYPR_CONFIG não encontrado. Abortando correção de caminho."
+        echo "ERROR: File $HYPR_CONFIG not found. Aborting path correction."
         return 1
     fi
     
-    # Substitui a linha 81 (ou a linha que contém o padrão)
+    # Replace the line that matches the pattern
     sed -i "s|^exec-once = /home/skyme/meus-dotfiles/hypr/scripts/wallpaper.sh init|exec-once = $ESCAPED_NEW_PATH|" "$HYPR_CONFIG"
     
     if [ $? -eq 0 ]; then
-        echo "  - Caminho corrigido em $HYPR_CONFIG para:"
+        echo "  - Path corrected in $HYPR_CONFIG to:"
         echo "    exec-once = $NEW_PATH"
     else
-        echo "  - Aviso: Não foi possível corrigir o caminho automaticamente. Verifique a linha 81 de $HYPR_CONFIG manualmente."
+        echo "  - Warning: Could not automatically fix the path. Please check line 81 of $HYPR_CONFIG manually."
     fi
 }
 
 # --------------------------------------------------------------------
-# 5. EXECUÇÃO PRINCIPAL
+# 5. MAIN EXECUTION
 # --------------------------------------------------------------------
 main() {
     echo "===================================================================="
-    echo "  INICIANDO INSTALAÇÃO DE DOTFILES my-rice-glass"
+    echo "  STARTING my-rice-glass DOTFILES INSTALLATION"
     echo "===================================================================="
     
-    # Garante que estamos no diretório correto
+    # Ensure we are in the correct directory
     if [ ! -d "$DOTFILES_DIR/hypr" ]; then
-        echo "ERRO: Execute este script dentro do diretório my-rice-glass."
+        echo "ERROR: Please run this script inside the my-rice-glass directory."
         exit 1
     fi
     
-    # Cria a pasta .config se não existir
+    # Create .config folder if it doesn't exist
     mkdir -p "$CONFIG_DIR"
     
     list_dependencies
     create_symlinks
     fix_hyprland_path
     
-    log "INSTALAÇÃO CONCLUÍDA!"
+    log "INSTALLATION COMPLETE!"
     echo "--------------------------------------------------------------------"
-    echo "1. Certifique-se de que todas as dependências foram instaladas."
-    echo "2. O caminho do script de wallpaper foi corrigido em hyprland.conf."
-    echo "3. Se você fez backup de arquivos existentes, verifique-os em *.bak."
-    echo "4. Reinicie o Hyprland ou o computador para aplicar as mudanças."
+    echo "1. Ensure all dependencies have been installed."
+    echo "2. The wallpaper script path has been corrected in hyprland.conf."
+    echo "3. If you backed up existing files, check them in *.bak."
+    echo "4. Restart Hyprland or your computer to apply the changes."
     echo "--------------------------------------------------------------------"
 }
 
