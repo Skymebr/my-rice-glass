@@ -95,9 +95,9 @@ ln -sf $(pwd)/hypr ~/.config/hypr
 
 ## Notes for AI Assistants
 
-- Os scripts assumem que o usuário é `skyme` e home é `/home/skyme`
+- Os scripts usam `$HOME` para portabilidade
 - Wallpapers são cacheados em `~/.cache/swww/` e `~/.cache/lock_wallpaper.png`
-- O script `wallpaper.sh` referencia caminho absoluto: `/home/skyme/meus-dotfiles/hypr/scripts/wallpaper.sh init`
+- O script `wallpaper.sh` referencia: `$HOME/meus-dotfiles/hypr/scripts/wallpaper.sh init`
 - Para novos usuários, ajustar paths absolutos nos scripts
 - Waybar é iniciada pelo `wallpaper.sh init`, não diretamente no hyprland.conf
 
