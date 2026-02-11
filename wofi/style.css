@@ -1,5 +1,5 @@
 /* IMPORTANTE: Traz as cores do Matugen */
-@import "/home/skyme/.config/wofi/colors.css";
+@import "$HOME/.config/wofi/colors.css";
 
 /* RESET GERAL */
 * {
