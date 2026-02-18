@@ -1,72 +1,125 @@
-/* IMPORTANTE: Traz as cores do Matugen */
-@import "$HOME/.config/wofi/colors.css";
+/* ============================================
+   Wofi Theme - Glass/Aero Style (No Gradient)
+   ============================================ */
 
-/* RESET GERAL */
+@import "/home/skyme/.config/wofi/colors.css";
+
+/* Reset completo */
 * {
     font-family: "JetBrains Mono Nerd Font", monospace;
-    font-weight: bold;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 16px;
+    outline: none;
+    box-shadow: none;
+    text-shadow: none;
 }
 
-/* A JANELA PRINCIPAL (O Vidro) */
+/* ============================================
+   JANELA PRINCIPAL - Efeito Glass/Aero
+   ============================================ */
 window {
-    margin: 0px;
-    /* Borda usa a cor de destaque do tema */
-    border: 2px solid @primary; 
-    border-radius: 16px;
-    /* Fundo usa a cor do wallpaper com transparência (0.85) */
-    background-color: rgba(15,28,36,0.5); 
+    /* Borda única com cor do matugen - SEM GRADIENTE */
+    border: 3px solid @primary;
+    border-radius: 24px;
+    
+    /* Fundo glass escuro com transparência - blur feito pelo Hyprland */
+    background-color: alpha(@background, 0.55);
+    
+    /* Nota: box-shadow não é suportado pelo wofi */
 }
 
-/* A CAIXA DE PESQUISA */
+/* Container externo */
+#outer-box {
+    margin: 0;
+    padding: 14px;
+    border-radius: 20px;
+    background-color: transparent;
+}
+
+/* ============================================
+   INPUT - Barra de pesquisa
+   ============================================ */
 #input {
-    margin: 5px;
-    border: none;
-    border-radius: 10px;
-    /* Fundo um pouco mais claro para destacar */
-    background-color: @surface; 
-    color: @primary; 
-    padding: 10px;
+    margin: 0 0 12px 0;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid alpha(@surface-bright, 0.25);
+    background-color: alpha(@surface, 0.50);
+    color: @foreground;
+    font-size: 17px;
+    caret-color: @foreground;
+    outline: none;
+    box-shadow: none;
 }
 
+#input:focus {
+    border: 1px solid alpha(@primary, 0.60);
+    background-color: alpha(@surface, 0.70);
+    outline: none;
+    box-shadow: none;
+}
+
+/* ============================================
+   LISTA DE ITENS
+   ============================================ */
 #inner-box {
-    margin: 5px;
-    border: none;
+    margin: 0;
     background-color: transparent;
+    spacing: 6px;
 }
 
-/* OS ITENS DA LISTA */
+/* Scroll - IMPORTANTE: precisa de border-radius para não vazar */
+#scroll {
+    background-color: transparent;
+    border-radius: 12px;
+}
+
+/* Cada item */
 #entry {
-    margin: 5px 0px;
-    border: none;
+    padding: 12px 16px;
     border-radius: 10px;
     background-color: transparent;
-    padding: 10px;
+    color: @foreground;
+    margin: 2px 4px;
 }
 
-/* ITEM SELECIONADO (O Destaque) */
+#entry:hover {
+    background-color: alpha(@surface-bright, 0.22);
+}
+
+/* Item selecionado - COR SÓLIDA, SEM GRADIENTE */
 #entry:selected {
-    /* Fundo fica da cor principal */
-    background-color: @primary; 
-    /* Texto inverte para ficar legível (preto/escuro) */
-    color: @background; 
-    border-radius: 10px;
-    border: none;
+    /* Fundo sólido com transparência usando cor primária */
+    background-color: alpha(@primary, 0.80);
+    color: @background;
+    /* border-radius e margin herdados de #entry */
 }
 
-/* ÍCONES */
-#img {
-    margin-right: 10px;
-    background-color: transparent;
-}
-
+/* ============================================
+   TEXTO E ÍCONES
+   ============================================ */
 #text {
-    margin: 5px;
-    border: none;
-    color: @secondary; /* Texto normal numa cor suave */
+    margin-left: 14px;
+    color: @foreground;
 }
 
-/* Garante que o texto selecionado fique legível */
 #text:selected {
+    color: @background;
+    font-weight: 700;
+}
+
+#img {
+    margin-right: 6px;
+    min-width: 24px;
+    min-height: 24px;
+}
+
+/* Texto destacado na busca */
+#text highlight {
+    color: @primary;
+    font-weight: 700;
+}
+
+#entry:selected #text highlight {
     color: @background;
 }
