@@ -1,5 +1,6 @@
 {
     "$schema": "/etc/xdg/swaync/configSchema.json",
+    "ignore-gtk-theme": true,
     "positionX": "right",
     "positionY": "top",
     "cssPriority": "user",
@@ -15,7 +16,7 @@
     "control-center-margin-right":10,
     "control-center-margin-left": 0,
 
-    "notification-window-width": 320,
+    "notification-window-width": 400,
     "notification-icon-size": 32,
     "notification-body-image-height": 100,
     "notification-body-image-width": 100,
@@ -49,6 +50,9 @@
         "notifications"
     ],
     "widget-config": {
+        "notifications": {
+            "vexpand": true
+        },
         "mpris": {
             "image-size": 50,
             "image-radius": 0

@@ -2,25 +2,31 @@
 
 /* --- CONFIG GLOBAL --- */
 * {
-    font-family: "JetBrains Mono Nerd Font"; 
-    font-weight: bold;
+    font-family: "Inter", "Noto Sans", sans-serif;
+    font-weight: 400;
 }
 
 /* --- BARRA LATERAL (Principal) --- */
 .control-center {
     background: @background;
-    border-left: 2px solid @border; 
-    border-right: none; border-top: none; border-bottom: none;
-    border-radius: 24px 0 0 24px; 
+    border: 1px solid alpha(@border, 0.22);
+    border-left: 2px solid @border;
+    border-radius: 24px;
     box-shadow: -10px 0 20px rgba(0, 0, 0, 0.5);
-    padding: 15px;
+    padding: 16px;
 }
 
 /* --- TÍTULO --- */
 .widget-title {
     color: @text;
     font-size: 18px;
+    margin-left: 4px;
+    margin-right: 4px;
     margin-bottom: 10px;
+}
+
+.widget-title > label {
+    margin-left: 2px;
 }
 
 .widget-title > button {
@@ -30,6 +36,7 @@
     border-radius: 12px;
     font-size: 12px;
     padding: 6px 15px;
+    margin-left: 8px;
     text-shadow: none; box-shadow: none;
 }
 
@@ -42,7 +49,7 @@
 .widget-buttons-grid {
     background: rgba(0, 0, 0, 0.2);
     border-radius: 16px;
-    padding: 5px;
+    padding: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -51,6 +58,11 @@
     background: transparent;
     border-radius: 12px;
     margin: 3px;
+    padding: 8px;
+    min-width: 38px;
+    min-height: 38px;
+    font-size: 15px;
+    font-weight: 500;
     border: none;
     box-shadow: none;
     color: @text;
@@ -76,7 +88,7 @@
 }
 
 .widget-mpris > box > box {
-    background: transparent !important;
+    background: transparent;
     border: none;
 }
 
@@ -88,23 +100,30 @@
     background: rgba(0, 0, 0, 0.2);
     border-radius: 16px;
     padding: 8px 12px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
-trough {
+.widget-dnd {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+}
+
+scale trough {
     background: rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     min-height: 6px;
 }
 
 /* [CORREÇÃO 2] Barra cheia usa a cor do tema */
-highlight {
+scale highlight {
     background: @border;
     border-radius: 20px;
 }
 
 /* [CORREÇÃO 2] Bolinha do slider também usa a cor do tema */
-slider {
+scale slider {
     background: @border;
     border: 2px solid @text; /* Opcional: borda para destacar a bolinha */
     border-radius: 50%;
@@ -114,7 +133,10 @@ slider {
 
 /* --- NOTIFICAÇÕES (Cards) --- */
 .notification-row {
-    outline: none; margin-top: 8px; margin-right: 15px; margin-left: 5px;
+    outline: none;
+    margin-top: 8px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .floating-notifications { background: transparent; }
@@ -128,42 +150,89 @@ slider {
 }
 
 .notification-content { padding: 10px; }
-.summary { color: @border; font-size: 14px; }
+.summary { color: @text; font-size: 14px; font-weight: 700; }
 .time { color: alpha(@text, 0.6); font-size: 11px; margin-right: 5px; }
-.body { color: @text; font-weight: normal; }
-.close-button { background: transparent; color: @text; border: none; box-shadow: none; text-shadow: none; }
+.body {
+    color: alpha(@text, 0.92);
+    font-size: 13px;
+    font-weight: 400;
+}
 
-/* --- ÍCONE "SEM NOTIFICAÇÕES" --- */
-.notification-list-container > label { color: @text; }
-.widget-dnd > image, .notification-list-container > image { color: @border; }
-
-/* --- BARRA DE ROLAGEM [CORREÇÃO 3] --- */
-scrollbar { background: transparent; }
-
-scrollbar slider {
-    background: alpha(@border, 0.3);
-    border-radius: 50px;
-    min-width: 4px;     /* Mantive fino no estado normal */
-    min-height: 40px;
+.close-button {
+    background: transparent;
+    color: alpha(@text, 0.75);
     border: none;
     box-shadow: none;
+    text-shadow: none;
 }
 
-/* Quando passa o mouse, aumenta só um pouquinho */
+.close-button:hover {
+    background: alpha(@border, 0.12);
+    color: @text;
+}
+
+/* --- ÍCONE "SEM NOTIFICAÇÕES" --- */
+.notification-list-container > label { color: @text; margin-top: 15px; }
+
+/* Remove COMPLETAMENTE o ícone quebrado de "Sem Notificações" */
+.notification-list-container > image,
+.notification-list-container image,
+.notification-list-container * image,
+image.notification-symbolic {
+    opacity: 0;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.widget-dnd > image { color: @border; }
+
+/* --- BARRA DE ROLAGEM [CORREÇÃO 3] --- */
+scrollbar {
+    background: transparent;
+    opacity: 0;
+}
+
+.control-center .control-center-list {
+    padding-right: 0;
+}
+
+scrollbar slider {
+    background: transparent;
+    min-width: 0;
+    min-height: 0;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    opacity: 0;
+}
+
 scrollbar slider:hover {
-    background: @border;
-    min-width: 6px;     /* Era 8px, diminuí para 6px para ficar mais elegante */
+    background: transparent;
 }
 
-scrollbar trough { border: none; background: transparent; }
+scrollbar trough {
+    border: none;
+    background: transparent;
+    margin: 0;
+    min-width: 0;
+    min-height: 0;
+    opacity: 0;
+}
 
 /* FIX FUNDO CINZA */
 listbox { background: transparent; }
-listbox > row { background: transparent !important; border: none !important; box-shadow: none !important; margin: 0px; }
-listbox > row:selected, listbox > row:focus, listbox > row:hover {
-    background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;
+listbox > row {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin: 0;
 }
 
-# BRILHO
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+listbox > row:selected, listbox > row:focus, listbox > row:hover {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}

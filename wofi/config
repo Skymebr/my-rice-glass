@@ -26,7 +26,7 @@ columns=1
 lines=12
 
 # Desempenho
-cache_file=/dev/null
+cache_file=/home/skyme/.cache/wofi-drun
 
 # Desativar tema GTK - usar apenas CSS customizado
 gtk_dark=true

@@ -1,9 +1,9 @@
-/* Template Genérico (Waybar, Wofi, etc) */
-@define-color background #1a1110;
-@define-color foreground #f1dedc;
-@define-color primary #ffb4aa;
-@define-color secondary #e7bdb7;
-@define-color tertiary #dfc38c;
+/* Template para Waybar e Wofi */
+@define-color background #191113;
+@define-color foreground #efdfe1;
+@define-color primary #ffb1c6;
+@define-color secondary #e3bdc6;
+@define-color tertiary #eebd93;
 @define-color error #ffb4ab;
-@define-color surface #1a1110;
-@define-color surface-bright #423735;
+@define-color surface #191113;
+@define-color surface-bright #413739;

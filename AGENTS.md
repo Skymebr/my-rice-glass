@@ -97,7 +97,7 @@ ln -sf $(pwd)/hypr ~/.config/hypr
 
 - Os scripts usam `$HOME` para portabilidade
 - Wallpapers são cacheados em `~/.cache/swww/` e `~/.cache/lock_wallpaper.png`
-- O script `wallpaper.sh` referencia: `$HOME/meus-dotfiles/hypr/scripts/wallpaper.sh init`
+- O `hyprland.conf` atual inicia o wallpaper com `~/.config/hypr/scripts/wallpaper.sh init`
 - Para novos usuários, ajustar paths absolutos nos scripts
 - Waybar é iniciada pelo `wallpaper.sh init`, não diretamente no hyprland.conf
 

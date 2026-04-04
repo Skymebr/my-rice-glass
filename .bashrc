@@ -1,26 +1,39 @@
-#
-# ~/.bashrc
-#
-
-# If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias cursor='~/Applications/cursor.AppImage --no-sandbox'
-PS1='[\u@\h \W]\$ '
+add_paths() {
+    local d
+    for d in "$@"; do
+        [[ -d "$d" && ":$PATH:" != *":$d:"* ]] && PATH="$PATH:$d"
+    done
+}
 
-# --- CARREGAMENTO OTIMIZADO DO ANACONDA ---
-# Isso faz o terminal abrir instantaneamente. 
-# O Conda só será carregado de fato quando você digitar "conda" pela primeira vez.
+add_paths "$HOME/.local/bin" "$HOME/.opencode/bin" "$HOME/.npm-global/bin"
+export PATH
+
+export OLLAMA_NUM_THREADS=16
+export OLLAMA_KEEP_ALIVE=30m
+
 conda() {
     unset -f conda
-    if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
+    if [[ -f "/opt/anaconda/etc/profile.d/conda.sh" ]]; then
         . "/opt/anaconda/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/anaconda/bin:$PATH"
+    elif [[ -d "/opt/anaconda/bin" ]]; then
+        add_paths "/opt/anaconda/bin"
+        export PATH
     fi
     conda "$@"
 }
 
-eval "$(starship init bash)"
+alias cursor='$HOME/Applications/cursor.AppImage --no-sandbox'
+alias updot='$HOME/.config/hypr/scripts/backup_rice.sh'
+alias manim-proj='cd "$HOME/ManimProjects"'
+alias manim-env='source "$HOME/venvs/manim-env/bin/activate"'
+alias steam='steam -tcp'
+
+[[ -r "$HOME/.local/share/bash-completion/completions/ai" ]] && source "$HOME/.local/share/bash-completion/completions/ai"
+
+if command -v fish >/dev/null 2>&1 && [[ "${SKIP_FISH:-0}" != 1 ]] && [[ ${SHLVL:-0} -le 2 ]] && grep -qv fish "/proc/$PPID/comm" 2>/dev/null; then
+    exec fish
+fi
+
+PS1='[\u@\h \W]\$ '

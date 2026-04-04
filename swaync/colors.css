@@ -1,10 +1,10 @@
 /* Correção: .red, .green, .blue em vez de .r .g .b */
-@define-color background rgba(26, 17, 16, 0.75);
+@define-color background rgba(25, 17, 19, 0.75);
 
-@define-color text #f1dedc;
-@define-color border #ffb4aa;
-@define-color button-bg #322826;
-@define-color button-text #ffb4aa;
-@define-color button-text-checked #561e18;
-@define-color button-bg #322826;
-@define-color button-text #ffb4aa;
+@define-color text #efdfe1;
+@define-color border #ffb1c6;
+@define-color button-bg #31282a;
+@define-color button-text #ffb1c6;
+@define-color button-text-checked #551d31;
+@define-color button-bg #31282a;
+@define-color button-text #ffb1c6;

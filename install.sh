@@ -3,12 +3,11 @@
 # ====================================================================
 # my-rice-glass: Simplified Installation Script
 # This script automates the creation of symbolic links for dotfiles
-# in the ~/.config/ folder and fixes the hardcoded path in hyprland.conf.
+# in the ~/.config/ folder.
 # ====================================================================
 
 DOTFILES_DIR="$(pwd)"
 CONFIG_DIR="$HOME/.config"
-HYPR_CONFIG="$DOTFILES_DIR/hypr/hyprland.conf"
 
 # --------------------------------------------------------------------
 # 1. LOGGING FUNCTION
@@ -37,7 +36,7 @@ create_symlinks() {
     log "CREATING SYMBOLIC LINKS"
     
     # List of directories to be linked
-    declare -a DIRS=("hypr" "kitty" "matugen" "swaync" "waybar" "wofi" "gtk-3.0" "gtk-4.0")
+    declare -a DIRS=("fastfetch" "hypr" "kitty" "matugen" "swaync" "waybar" "wofi" "gtk-3.0" "gtk-4.0")
     
     for dir in "${DIRS[@]}"; do
         SOURCE="$DOTFILES_DIR/$dir"
@@ -64,34 +63,15 @@ create_symlinks() {
 }
 
 # --------------------------------------------------------------------
-# 4. PATH CORRECTION FUNCTION
+# 4. CONFIG VALIDATION FUNCTION
 # --------------------------------------------------------------------
-fix_hyprland_path() {
-    log "FIXING WALLPAPER SCRIPT PATH"
-    
-    # The hardcoded path in hyprland.conf is:
-    # exec-once = /home/skyme/meus-dotfiles/hypr/scripts/wallpaper.sh init
-    
-    # The new path should be:
-    NEW_PATH="$DOTFILES_DIR/hypr/scripts/wallpaper.sh init"
-    
-    # Escaping slashes for sed
-    ESCAPED_NEW_PATH=$(echo "$NEW_PATH" | sed 's/\//\\\//g')
-    
-    # Using sed to replace line 81 in the configuration file
-    if [ ! -f "$HYPR_CONFIG" ]; then
-        echo "ERROR: File $HYPR_CONFIG not found. Aborting path correction."
-        return 1
-    fi
-    
-    # Replace the line that matches the pattern
-    sed -i "s|^exec-once = /home/skyme/meus-dotfiles/hypr/scripts/wallpaper.sh init|exec-once = $ESCAPED_NEW_PATH|" "$HYPR_CONFIG"
-    
-    if [ $? -eq 0 ]; then
-        echo "  - Path corrected in $HYPR_CONFIG to:"
-        echo "    exec-once = $NEW_PATH"
+validate_hyprland_config() {
+    log "VALIDATING HYPRLAND CONFIG"
+
+    if grep -q '^exec-once = ~/.config/hypr/scripts/wallpaper.sh init$' "$DOTFILES_DIR/hypr/hyprland.conf"; then
+        echo "  - Wallpaper script path already points to ~/.config/hypr/scripts/wallpaper.sh"
     else
-        echo "  - Warning: Could not automatically fix the path. Please check line 81 of $HYPR_CONFIG manually."
+        echo "  - Warning: hypr/hyprland.conf no longer matches the expected wallpaper startup path."
     fi
 }
 
@@ -114,12 +94,12 @@ main() {
     
     list_dependencies
     create_symlinks
-    fix_hyprland_path
+    validate_hyprland_config
     
     log "INSTALLATION COMPLETE!"
     echo "--------------------------------------------------------------------"
     echo "1. Ensure all dependencies have been installed."
-    echo "2. The wallpaper script path has been corrected in hyprland.conf."
+    echo "2. Hyprland config was validated against the expected wallpaper startup path."
     echo "3. If you backed up existing files, check them in *.bak."
     echo "4. Restart Hyprland or your computer to apply the changes."
     echo "--------------------------------------------------------------------"

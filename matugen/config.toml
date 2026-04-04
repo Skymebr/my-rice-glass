@@ -9,60 +9,59 @@ variant = "fidelity"
 # --- TEMPLATES ---
 
 [templates.papirus_hex]
-input_path = "$HOME/.config/matugen/templates/folder-color.txt"
-output_path = "$HOME/.cache/matugen/current_primary_color.txt"
-post_hook = "bash $HOME/.config/matugen/scripts/update-papirus.sh &"
+input_path = "/home/skyme/.config/matugen/templates/folder-color.txt"
+output_path = "/home/skyme/.cache/matugen/current_primary_color.txt"
+post_hook = "bash /home/skyme/.config/matugen/scripts/update-papirus.sh &"
 
 [templates.hyprland]
-input_path = "$HOME/.config/matugen/templates/hyprland-colors.conf"
-output_path = "$HOME/.config/hypr/colors.conf"
+input_path = "/home/skyme/.config/matugen/templates/hyprland-colors.conf"
+output_path = "/home/skyme/.config/hypr/colors.conf"
 post_hook = "hyprctl reload"
 
 [templates.waybar]
-input_path = "$HOME/.config/matugen/templates/common-colors.css"
-output_path = "$HOME/.config/waybar/colors.css"
+input_path = "/home/skyme/.config/matugen/templates/common-colors.css"
+output_path = "/home/skyme/.config/waybar/colors.css"
 # Opcional: Recarregar waybar se precisar
 # post_hook = "pkill -SIGUSR2 waybar"
 
 [templates.wofi]
-input_path = "$HOME/.config/matugen/templates/common-colors.css"
-output_path = "$HOME/.config/wofi/colors.css"
+input_path = "/home/skyme/.config/matugen/templates/common-colors.css"
+output_path = "/home/skyme/.config/wofi/colors.css"
 
 [templates.swaync]
-input_path = "$HOME/.config/matugen/templates/swaync.css"
-output_path = "$HOME/.config/swaync/colors.css"
+input_path = "/home/skyme/.config/matugen/templates/swaync.css"
+output_path = "/home/skyme/.config/swaync/colors.css"
 post_hook = "swaync-client -rs" 
 
 [templates.kitty]
-input_path = "$HOME/.config/matugen/templates/kitty-colors.conf"
-output_path = "$HOME/.config/kitty/colors.conf"
+input_path = "/home/skyme/.config/matugen/templates/kitty-colors.conf"
+output_path = "/home/skyme/.config/kitty/colors.conf"
 # Kitty recarrega sozinho se configurado, mas pode forçar:
 # post_hook = "pkill -SIGUSR1 kitty"
 
 [templates.fastfetch]
-input_path = "$HOME/.config/matugen/templates/fastfetch.jsonc"
-output_path = "$HOME/.config/fastfetch/config.jsonc"
+input_path = "/home/skyme/.config/matugen/templates/fastfetch.jsonc"
+output_path = "/home/skyme/.config/fastfetch/config.jsonc"
 
 [templates.cava]
-input_path = "$HOME/.config/matugen/templates/cava.conf"
-output_path = "$HOME/.config/cava/config"
+input_path = "/home/skyme/.config/matugen/templates/cava.conf"
+output_path = "/home/skyme/.config/cava/config"
 post_hook = "pkill -USR1 cava"
 
 [templates.pywalfox]
-input_path = '$HOME/.config/matugen/templates/pywalfox-colors.json'
-output_path = '$HOME/.cache/wal/colors.json'
+input_path = '/home/skyme/.config/matugen/templates/pywalfox-colors.json'
+output_path = '/home/skyme/.cache/wal/colors.json'
 post_hook = 'pywalfox update'
 
 [templates.spicetify]
-input_path = "$HOME/.config/matugen/templates/spicetify.ini"
-output_path = "$HOME/.config/spicetify/Themes/Matugen/color.ini"
+input_path = "/home/skyme/.config/matugen/templates/spicetify.ini"
+output_path = "/home/skyme/.config/spicetify/Themes/Matugen/color.ini"
 
 [templates.gtk3]
-input_path = "$HOME/.config/matugen/templates/gtk-colors.css"
-output_path = "$HOME/.config/gtk-3.0/colors.css"
+input_path = "/home/skyme/.config/matugen/templates/gtk-colors.css"
+output_path = "/home/skyme/.config/gtk-3.0/colors.css"
 post_hook = "gsettings set org.gnome.desktop.interface gtk-theme ''; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark"
 
 [templates.gtk4]
-input_path = "$HOME/.config/matugen/templates/gtk-colors.css"
-output_path = "$HOME/.config/gtk-4.0/colors.css"
-
+input_path = "/home/skyme/.config/matugen/templates/gtk-colors.css"
+output_path = "/home/skyme/.config/gtk-4.0/colors.css"

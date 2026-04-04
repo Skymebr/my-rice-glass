@@ -97,7 +97,7 @@ To replicate this configuration, you will need the following packages installed:
 2.  **Install Dependencies:**
     Ensure that all packages listed above (Hyprland, Waybar, Kitty, etc.) are installed on your system. The script **does not** install packages, it only configures the files.
 3.  **Execute the Installation Script:**
-    The script will create the necessary symbolic links in your `~/.config/` folder and automatically fix the wallpaper script path in `hyprland.conf`.
+    The script will create the necessary symbolic links in your `~/.config/` folder.
     ```bash
     chmod +x install.sh
     ./install.sh
