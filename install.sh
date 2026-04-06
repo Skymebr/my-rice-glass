@@ -36,7 +36,7 @@ create_symlinks() {
     log "CREATING SYMBOLIC LINKS"
     
     # List of directories to be linked
-    declare -a DIRS=("fastfetch" "hypr" "kitty" "matugen" "swaync" "waybar" "wofi" "gtk-3.0" "gtk-4.0")
+    declare -a DIRS=("fastfetch" "hypr" "kitty" "matugen" "skywall" "swaync" "waybar" "wofi" "gtk-3.0" "gtk-4.0")
     
     for dir in "${DIRS[@]}"; do
         SOURCE="$DOTFILES_DIR/$dir"

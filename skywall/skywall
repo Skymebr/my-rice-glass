@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+BIN_PATH="$SCRIPT_DIR/skywall-bin"
+SRC_PATH="$SCRIPT_DIR/skywall.c"
+
+if [[ -x "$BIN_PATH" && "$BIN_PATH" -nt "$SRC_PATH" ]]; then
+    exec "$BIN_PATH" --config "$SCRIPT_DIR/config.env" "$@"
+fi
+
+BIN_PATH=$("$SCRIPT_DIR/build.sh")
+exec "$BIN_PATH" --config "$SCRIPT_DIR/config.env" "$@"

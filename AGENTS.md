@@ -37,7 +37,9 @@ my-rice-glass/
 │       ├── restore_wallpaper.sh  # Restauração de wallpaper
 │       ├── sync-lock.sh          # Sincroniza lock screen
 │       ├── togglegamma.sh        # Toggle gammastep
-│       └── cancel_menu.sh        # Cancela menu de energia
+│       ├── cancel_menu.sh        # Cancela menu de energia
+│       └── skywall.sh            # Launcher do picker visual
+├── skywall/                  # Aplicação C + GTK4 + layer-shell para escolher wallpapers
 ```
 
 ## Key Features
@@ -67,6 +69,7 @@ my-rice-glass/
 | Script | Função |
 |--------|--------|
 | `wallpaper.sh` | Gerencia wallpapers com swww, gera cores com matugen |
+| `skywall` | Picker visual manual para escolher wallpapers |
 | `status_daemon.sh` | Atualiza status em `/tmp/lock_status` |
 | `music.sh` | Retorna info da música atual para lock screen |
 | `greeting.sh` | Saudação baseada na hora do dia |

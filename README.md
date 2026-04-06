@@ -52,6 +52,17 @@ The `wallpaper.sh` script does the following:
     * Kitty (terminal).
     * SwayNC (notifications).
 
+### 2.1 Skywall (Optional Visual Picker)
+
+`skywall` is an optional manual picker in `C + GTK4 + gtk4-layer-shell` that keeps `hypr/scripts/wallpaper.sh` as the single backend.
+
+- Path: `skywall/`
+- Launch command after install: `~/.config/skywall/skywall`
+- Helper wrapper: `~/.config/hypr/scripts/skywall.sh`
+- It supports images and videos with a canvas UI inspired by the Horizon wallpicker.
+
+This repository does **not** change your `hyprland.conf` automatically for `skywall`. Bind it manually if you want to use it.
+
 ### 3. Application and Window Shortcuts
 
 | Action | Shortcut | Command/Program |
@@ -85,7 +96,7 @@ To replicate this configuration, you will need the following packages installed:
 *   **Wallpaper:** `swww` and `mpvpaper` (for videos)
 *   **Dynamic Colors:** `matugen`
 *   **Notifications:** `SwayNC`
-*   **Utilities:** `kitty`, `thunar`, `hyprshot`, `playerctl`, `brightnessctl`, `wpctl`, `ffmpeg`
+*   **Utilities:** `kitty`, `thunar`, `hyprshot`, `playerctl`, `brightnessctl`, `wpctl`, `ffmpeg`, `gcc`, `gtk4`, `gtk4-layer-shell`, `gdk-pixbuf2`, `cairo`
 
 **Installation with Script (Recommended):**
 
