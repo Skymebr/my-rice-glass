@@ -65,8 +65,9 @@ Main knobs:
 `SKYWALL_LAYER_NAMESPACE` defaults to `skywall` and the repository ships a
 matching blur/no-animation layerrule in `hyprland.conf`.
 
-The grid adapts to the available width while staying visually close to the
-reference project.
+The grid adapts to the available width and is meant to feel cinematic and
+customizable rather than generic: large thumbnails, staggered rows, muted idle
+states, and stronger focus on the current or hovered wallpaper.
 
 ## Manual Run
 

@@ -66,7 +66,7 @@ Its philosophy is customization over hardcoded taste. Layout density, card size,
 - Launch command after install: `~/.config/skywall/skywall`
 - Helper wrapper: `~/.config/hypr/scripts/skywall.sh`
 - Default shortcut in this repo: `SUPER + Z`
-- It supports images and videos with a canvas UI inspired by the Horizon wallpicker.
+- It supports images and videos with a fullscreen canvas UI, staggered cards, grayscale idle thumbnails, and stronger emphasis on the current and hovered wallpaper.
 
 ### 3. Application and Window Shortcuts
 
