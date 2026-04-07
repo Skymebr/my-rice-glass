@@ -52,23 +52,8 @@ The `wallpaper.sh` script does the following:
     * Kitty (terminal).
     * SwayNC (notifications).
 
-### 2.1 Skywall (Optional Visual Picker)
 
-`skywall` is the manual wallpaper picker for this setup, written in `C + GTK4 + gtk4-layer-shell` and intentionally built on top of `hypr/scripts/wallpaper.sh` instead of replacing it.
-
-I made `skywall` because the wallpaper in this rice is not just a background image. It also drives the colors of the whole environment through `matugen`, so choosing a wallpaper became part of shaping the entire desktop mood. A random picker was useful, but I wanted a visual selector that felt native to the rice itself instead of a generic launcher or file picker.
-
-The main idea behind `skywall` is simple: keep one wallpaper backend, and make the visual layer highly customizable. The backend still lives in `wallpaper.sh`, while `skywall` focuses only on browsing and choosing. That makes it easier to change the presentation without breaking the wallpaper pipeline.
-
-Its philosophy is customization over hardcoded taste. Layout density, card size, spacing, stagger, shape, slant, grayscale treatment, alpha levels, hover emphasis, and fullscreen behavior can all be tuned through `skywall/config.env`. The goal is not to lock the picker into one fixed look, but to let it be reshaped to match different visual directions while staying coherent with the rest of the rice.
-
-- Path: `skywall/`
-- Launch command after install: `~/.config/skywall/skywall`
-- Helper wrapper: `~/.config/hypr/scripts/skywall.sh`
-- Default shortcut in this repo: `SUPER + Z`
-- It supports images and videos with a fullscreen canvas UI, staggered cards, grayscale idle thumbnails, and stronger emphasis on the current and hovered wallpaper.
-
-### 3. Application and Window Shortcuts
+### 2. Application and Window Shortcuts
 
 | Action | Shortcut | Command/Program |
 | :--- | :--- | :--- |
@@ -80,7 +65,7 @@ Its philosophy is customization over hardcoded taste. Layout density, card size,
 | **Toggle Floating** | `SUPER + V` | `togglefloating,` |
 | **Fullscreen** | `SUPER + F` | `fullscreen` |
 
-### 4. Screenshots
+### 3. Screenshots
 
 The configuration uses `hyprshot` for taking screenshots.
 
