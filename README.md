@@ -8,6 +8,7 @@ The "rice" (visual configuration) is built around the following core components:
 | :--- | :--- | :--- |
 | **Hyprland** | Tiling Window Manager | `hypr/hyprland.conf`, `hypr/colors.conf` |
 | **Waybar** | Status Bar | `waybar/config`, `waybar/style.css` |
+| **Quickshell** | Alternate Glass Bar | `quickshell/`, `hypr/scripts/glass-bar.sh` |
 | **Kitty** | Terminal Emulator | `kitty/kitty.conf`, `kitty/colors.conf` |
 | **Wofi** | Application Launcher | `wofi/style.css` |
 | **SwayNC** | Notification Center | `swaync/config.json`, `swaync/style.css` |
@@ -80,7 +81,7 @@ The configuration uses `hyprshot` for taking screenshots.
 To replicate this configuration, you will need the following packages installed:
 
 *   **Window Manager:** `Hyprland`
-*   **Status Bar:** `Waybar`
+*   **Status Bar:** `Waybar` or `Quickshell`
 *   **Launcher:** `Wofi`
 *   **Screen Locker:** `Hyprlock`
 *   **Wallpaper:** `swww` and `mpvpaper` (for videos)

@@ -28,6 +28,10 @@ output_path = "/home/skyme/.config/waybar/colors.css"
 input_path = "/home/skyme/.config/matugen/templates/common-colors.css"
 output_path = "/home/skyme/.config/wofi/colors.css"
 
+[templates.quickshell_glass]
+input_path = "/home/skyme/.config/matugen/templates/quickshell-glass.json"
+output_path = "/home/skyme/.cache/quickshell/glass-colors.json"
+
 [templates.swaync]
 input_path = "/home/skyme/.config/matugen/templates/swaync.css"
 output_path = "/home/skyme/.config/swaync/colors.css"

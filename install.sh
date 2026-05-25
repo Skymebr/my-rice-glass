@@ -23,7 +23,7 @@ list_dependencies() {
     log "REQUIRED DEPENDENCIES"
     echo "--------------------------------------------------------------------"
     echo "This script DOES NOT install packages. You must install them manually:"
-    echo "Hyprland, Waybar, Kitty, Wofi, SwayNC, Swww, Matugen, Hyprlock,"
+    echo "Hyprland, Waybar, Quickshell, Kitty, Wofi, SwayNC, Swww, Matugen, Hyprlock,"
     echo "Thunar, Hyprshot, playerctl, brightnessctl, wpctl, ffmpeg (for videos)."
     echo "--------------------------------------------------------------------"
     read -p "Press [Enter] to continue..."
@@ -36,7 +36,7 @@ create_symlinks() {
     log "CREATING SYMBOLIC LINKS"
     
     # List of directories to be linked
-    declare -a DIRS=("fastfetch" "hypr" "kitty" "matugen" "skywall" "swaync" "waybar" "wofi" "gtk-3.0" "gtk-4.0")
+    declare -a DIRS=("fastfetch" "hypr" "kitty" "matugen" "quickshell" "swaync" "waybar" "wofi" "gtk-3.0" "gtk-4.0")
     
     for dir in "${DIRS[@]}"; do
         SOURCE="$DOTFILES_DIR/$dir"

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # --- CONFIGURACAO ---
-WALLPAPER_DIR="${WALLPAPER_DIR:-$HOME/meus-dotfiles/wallpapers}"
+WALLPAPER_DIR="${WALLPAPER_DIR:-$HOME/my-rice-glass/wallpapers}"
 CACHE_DIR="$HOME/.cache"
 LOCK_FILE="$CACHE_DIR/lock_wallpaper.png"
 CURRENT_FILE="$CACHE_DIR/current_wallpaper"
@@ -104,15 +104,12 @@ update_system_theme() {
     fi
 
     if command -v matugen &>/dev/null; then
-        matugen image "$LOCK_FILE" --quiet
+        matugen image "$LOCK_FILE" --quiet --source-color-index 0
     fi
 
     {
         pkill -SIGUSR2 waybar || (killall waybar; waybar & disown)
-        command -v pywalfox &>/dev/null && pywalfox update
         killall -SIGUSR1 kitty
-        pkill -SIGUSR1 cava
-        swaync-client -rs
         pkill wofi
 
         if pgrep -x "spotify" >/dev/null; then
@@ -121,12 +118,12 @@ update_system_theme() {
             sleep 0.5
             spotify & disown
         fi
-    } 2>/dev/null &
+    } >/dev/null 2>&1 &
 
     if [[ -f "$hypr_colors" ]]; then
         eval "$(awk '
-            /primary.default.hex/ { print \"NEW_BORDER=0xff\" substr($3, 2) }
-            /surface.default.hex/ { print \"NEW_INACTIVE=0xff\" substr($3, 2) }
+            /primary.default.hex/ { print "NEW_BORDER=0xff" substr($3, 2) }
+            /surface.default.hex/ { print "NEW_INACTIVE=0xff" substr($3, 2) }
         ' "$hypr_colors")"
 
         if [[ -n "${NEW_BORDER:-}" ]]; then
@@ -149,7 +146,7 @@ case "$MODE" in
         ;;
 esac
 
-mkdir -p "$CACHE_DIR" "$THUMB_DIR"
+mkdir -p "$CACHE_DIR" "$THUMB_DIR" "$CACHE_DIR/swww"
 
 if [[ ! -d "$WALLPAPER_DIR" ]]; then
     exit 1
@@ -158,7 +155,8 @@ fi
 set_transition_args "$MODE" "${3:-0.500}" "${4:-0.500}"
 
 if ! pgrep -x "swww-daemon" >/dev/null; then
-    swww-daemon --format xrgb &
+    swww-daemon --format xrgb >/dev/null 2>&1 &
+    disown
 fi
 
 if ! wait_for_swww; then

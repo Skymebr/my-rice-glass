@@ -2,9 +2,9 @@
 @define-color background rgba(25, 17, 19, 0.75);
 
 @define-color text #efdfe1;
-@define-color border #ffb1c6;
-@define-color button-bg #31282a;
-@define-color button-text #ffb1c6;
-@define-color button-text-checked #551d31;
-@define-color button-bg #31282a;
-@define-color button-text #ffb1c6;
+@define-color border #ffb1c4;
+@define-color button-bg #312829;
+@define-color button-text #ffb1c4;
+@define-color button-text-checked #551d2f;
+@define-color button-bg #312829;
+@define-color button-text #ffb1c4;

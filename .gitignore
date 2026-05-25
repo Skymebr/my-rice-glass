@@ -1,3 +1,8 @@
 __pycache__/
 *.pyc
-skywall/skywall-bin
+*.ai_backup
+*.bak
+*.save
+*.save.*
+gtk-3.0/bookmarks
+gtk-4.0/bookmarks
